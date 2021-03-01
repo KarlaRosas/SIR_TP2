@@ -1,5 +1,5 @@
-/**Utilisateur**/
-package jpa;
+/**Section**/
+package domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,23 +9,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Utilisateur {
+public class Section {
     private Long id;
 
     private String name;
 
-   private List<Fiche> fiches = new ArrayList<Fiche>();
+    private Tableau tableau;
 
+    private List<Fiche> fiches = new ArrayList<Fiche>();
 
-    public Utilisateur() {
+    public Section() {
     }
 
-    public Utilisateur(String name, Fiche fiche) {
+    public Section(String name, Tableau tableau) {
         this.name = name;
-        this.fiches.add(fiche);
+        this.tableau = tableau;
     }
 
-    public Utilisateur(String name) {
+    public Section(String name) {
         this.name = name;
     }
 
@@ -47,7 +48,16 @@ public class Utilisateur {
         this.name = name;
     }
 
-    @ManyToMany
+    @ManyToOne
+    public Tableau getTableau() {
+        return tableau;
+    }
+
+    public void setTableau(Tableau tableau) {
+        this.tableau = tableau;
+    }
+
+    @OneToMany(mappedBy = "section", cascade = CascadeType.PERSIST)
     public List<Fiche> getFiches() {
         return fiches;
     }
@@ -56,10 +66,12 @@ public class Utilisateur {
         this.fiches = fiches;
     }
 
+
+
     @Override
     public String toString() {
-        return "Utilisateur [id=" + id + ", name=" + name + ", tableau="
-                + fiches.get(0).getName() + "]";
+        return "Section [id=" + id + ", name=" + name + ", tableau="
+                + tableau.getName() + "]";
     }
 
 }

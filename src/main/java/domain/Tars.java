@@ -1,28 +1,30 @@
-/**Employee**/
-package jpa;
+/**Utilisateur**/
+package domain;
+
+import domain.Fiche;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
-public class Employee {
+public class Tars {
     private Long id;
 
     private String name;
 
-    private Department department;
+    private Fiche fiche;
 
-    public Employee() {
+    public Tars() {
     }
 
-    public Employee(String name, Department department) {
+    public Tars(String name, Fiche fiche) {
         this.name = name;
-        this.department = department;
+        this.fiche = fiche;
     }
 
-    public Employee(String name) {
+    public Tars(String name) {
         this.name = name;
     }
 
@@ -45,18 +47,18 @@ public class Employee {
     }
 
     @ManyToOne
-    public Department getDepartment() {
-        return department;
+    public Fiche getFiche() {
+        return fiche;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
+    public void setFiche(Fiche fiche) {
+        this.fiche = fiche;
     }
 
     @Override
     public String toString() {
-        return "Employee [id=" + id + ", name=" + name + ", department="
-                + department.getName() + "]";
+        return "Tars [id=" + id + ", name=" + name + ", tableau="
+                + fiche.getName() + "]";
     }
 
 }
