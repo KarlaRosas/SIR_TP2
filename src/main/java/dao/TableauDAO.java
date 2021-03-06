@@ -1,6 +1,8 @@
 package dao;
 
 import domain.Fiche;
+import domain.Tableau;
+import javafx.scene.control.Tab;
 import jpa.EntityManagerHelper;
 
 import javax.persistence.EntityTransaction;
@@ -8,79 +10,64 @@ import java.util.List;
 
 public class TableauDAO {
 
-    public void saveFiche(Fiche fiche) {
-        EntityTransaction t = EntityManagerHelper.getEntityManager().getTransaction();
+    public void saveTableau(Tableau tableau) {
+        EntityTransaction tab = EntityManagerHelper.getEntityManager().getTransaction();
 
-        t.begin();
-        EntityManagerHelper.getEntityManager().persist(fiche);
-        t.commit();
+        tab.begin();
+        EntityManagerHelper.getEntityManager().persist(tableau);
+        tab.commit();
     }
-    public List<Fiche> getAllFichesDao() {
-        String query = "select t from Fiche as t";
-        return EntityManagerHelper.getEntityManager().createQuery(query, Fiche.class).getResultList();
-    }
-
-    public List<Fiche> getAllFiche1() {
-        String query = "select t from Fiche as t where t.name='fiche1'";
-        return EntityManagerHelper.getEntityManager().createQuery(query, Fiche.class).getResultList();
+    public List<Tableau> getAllTableauxDao() {
+        String query = "select tab from Tableau as tab";
+        return EntityManagerHelper.getEntityManager().createQuery(query, Tableau.class).getResultList();
     }
 
-    public List<Fiche> getAllFichesSansUtilisateurDao() {
-        String query = "select t from Fiche as t where t.utilisateurs is EMPTY";
-        return EntityManagerHelper.getEntityManager().createQuery(query, Fiche.class).getResultList();
+    public List<Tableau> getAllTableaux1() {
+        String query = "select tab from Tableau as tab where tab.name='tableau1'";
+        return EntityManagerHelper.getEntityManager().createQuery(query, Tableau.class).getResultList();
     }
 
-    public List<Fiche> getAllFichesSansTagsDao() {
-        String query = "select t from Fiche as t where t.tars is EMPTY";
-        return EntityManagerHelper.getEntityManager().createQuery(query, Fiche.class).getResultList();
+    public List<Tableau> getAllTableaux2() {
+        String query = "select tab from Tableau as tab where tab.name='tableau2'";
+        return EntityManagerHelper.getEntityManager().createQuery(query, Tableau.class).getResultList();
     }
 
-    public List<Fiche> getAllFichesTagsImportantDao() {
-        String query = "select t from Fiche as t join t.tars as a where a.name='Important'";
-        return EntityManagerHelper.getEntityManager().createQuery(query, Fiche.class).getResultList();
+    public List<Tableau> getAllTableauxSansSectionDao() {
+        String query = "select tab from Tableau as tab where tab.sections is EMPTY";
+        return EntityManagerHelper.getEntityManager().createQuery(query, Tableau.class).getResultList();
     }
 
-    public List<Fiche> getAllFichesTagsPriorityDao() {
-        String query = "select t from Fiche as t join t.tars as a where a.name='Priority'";
-        return EntityManagerHelper.getEntityManager().createQuery(query, Fiche.class).getResultList();
+
+    public List<Tableau> getAllTableauxNamelong6() {
+        String query = "select tab from Tableau as tab " +
+                "where LENGTH(tab.name) = 6";
+        return EntityManagerHelper.getEntityManager().createQuery(query, Tableau.class).getResultList();
     }
 
-    public List<Fiche> getAllFichesParam(String name) {
-        String query = "select t from Fiche as t join t.tars as a where a.name=:name";
-        return EntityManagerHelper.getEntityManager().createQuery(query, Fiche.class)
-                .setParameter("name", name).getResultList();
-    }
-
-    public List<Fiche> getAllFichesNamelong6() {
-        String query = "select t from Fiche as t " +
-                "where LENGTH(t.name) = 6";
-        return EntityManagerHelper.getEntityManager().createQuery(query, Fiche.class).getResultList();
-    }
-
-    public List<Fiche> get4FichesASCfiches() {
-        String query = "select t from Fiche as t ORDER BY t.name ASC";
+    public List<Tableau> getFirstTableau() {
+        String query = "select tab from Tableau as tab ORDER BY tab.name ASC";
         return EntityManagerHelper.getEntityManager().
-                createQuery(query, Fiche.class)
-                .setFirstResult(1).setMaxResults(4)
+                createQuery(query, Tableau.class)
+                .setFirstResult(1).setMaxResults(1)
                 .getResultList();
     }
-    public List<Fiche> get4FirstDESCfiches() {
-        String query = "select t from Fiche as t ORDER BY t.name DESC";
+    public List<Tableau> getLastTableau() {
+        String query = "select tab from Tableau as tab ORDER BY tab.name DESC";
         return EntityManagerHelper.getEntityManager().
-                createQuery(query, Fiche.class)
-                .setFirstResult(1).setMaxResults(4)
+                createQuery(query, Tableau.class)
+                .setFirstResult(1).setMaxResults(1)
                 .getResultList();
     }
 
-    public List<Fiche> getAllMFichenative() {
-        String query = "select * from Fiche";
+    public List<Tableau> getAllTableauxNatifs() {
+        String query = "select * from Tableau";
         return EntityManagerHelper.getEntityManager().
-                createNativeQuery(query, Fiche.class).getResultList();
+                createNativeQuery(query, Tableau.class).getResultList();
     }
-    public List<Fiche> getAllficheswithutilisateursLoaded() {
-        String query = "SELECT t from Fiche as t "
-                + "where t.name='fiche1' join fetch t.utilisateurs.name";
-        return EntityManagerHelper.getEntityManager().createQuery(query, Fiche.class).getResultList();
+    public List<Tableau> getAllTableauxWithSectionsLoaded() {
+        String query = "SELECT tab from Tableau as tab "
+                + "where tab.name='tableau1' join fetch tab.section.name";
+        return EntityManagerHelper.getEntityManager().createQuery(query, Tableau.class).getResultList();
     }
 
 
