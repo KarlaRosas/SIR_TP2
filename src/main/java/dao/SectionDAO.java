@@ -22,12 +22,12 @@ public class SectionDAO {
     }
 
     public List<Section> getAllSection1() {
-        String query = "select s from Section as s where s.name='section1'";
+        String query = "select s from Section as s where s.name='À faire B'";
         return EntityManagerHelper.getEntityManager().createQuery(query, Section.class).getResultList();
     }
 
-    public List<Section> getAllSectionsSansFicheDao() {
-        String query = "select s from Section as s where s.fiches is EMPTY";
+    public List<Section> getAllSectionsSansTableauDao() {
+        String query = "select s from Section as s where s.tableau is EMPTY";
         return EntityManagerHelper.getEntityManager().createQuery(query, Section.class).getResultList();
     }
 
@@ -37,18 +37,18 @@ public class SectionDAO {
         return EntityManagerHelper.getEntityManager().createQuery(query, Section.class).getResultList();
     }
 
-    public List<Section> getFirstSection() {
+    public List<Section> getSectionASC() {
         String query = "select s from Section as s ORDER BY s.name ASC";
         return EntityManagerHelper.getEntityManager().
                 createQuery(query, Section.class)
-                .setFirstResult(1).setMaxResults(1)
+                .setFirstResult(1).setMaxResults(10)
                 .getResultList();
     }
-    public List<Section> getLastSection() {
+    public List<Section> getSectionDESC() {
             String query = "select s from Section as s ORDER BY s.name DESC";
         return EntityManagerHelper.getEntityManager().
                 createQuery(query, Section.class)
-                .setFirstResult(1).setMaxResults(1)
+                .setFirstResult(1).setMaxResults(10)
                 .getResultList();
     }
 
@@ -57,11 +57,10 @@ public class SectionDAO {
         return EntityManagerHelper.getEntityManager().
                 createNativeQuery(query, Section.class).getResultList();
     }
-    public List<Section> getAllSectionsWithTableauxLoaded() {
-        String query = "SELECT s from Section as s "
-                + "where s.name='section1' join fetch s.tableau.name";
-        return EntityManagerHelper.getEntityManager().createQuery(query, Section.class).getResultList();
+    public List<Section> getAllSectionParam(String name) {
+        String query = "select t from Section as t join t.fiches as a where a.name=:name";
+        return EntityManagerHelper.getEntityManager().createQuery(query, Section.class)
+                .setParameter("name", name).getResultList();
     }
-
 
 }

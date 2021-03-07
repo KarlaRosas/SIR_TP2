@@ -2,7 +2,6 @@ package dao;
 
 import domain.Fiche;
 import jpa.EntityManagerHelper;
-
 import javax.persistence.EntityTransaction;
 import java.util.List;
 

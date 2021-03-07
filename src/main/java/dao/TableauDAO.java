@@ -2,7 +2,6 @@ package dao;
 
 import domain.Fiche;
 import domain.Tableau;
-import javafx.scene.control.Tab;
 import jpa.EntityManagerHelper;
 
 import javax.persistence.EntityTransaction;
@@ -23,12 +22,12 @@ public class TableauDAO {
     }
 
     public List<Tableau> getAllTableaux1() {
-        String query = "select tab from Tableau as tab where tab.name='tableau1'";
+        String query = "select tab from Tableau as tab where tab.name='Tableau Backend'";
         return EntityManagerHelper.getEntityManager().createQuery(query, Tableau.class).getResultList();
     }
 
     public List<Tableau> getAllTableaux2() {
-        String query = "select tab from Tableau as tab where tab.name='tableau2'";
+        String query = "select tab from Tableau as tab where tab.name='Tableau Frontend'";
         return EntityManagerHelper.getEntityManager().createQuery(query, Tableau.class).getResultList();
     }
 
@@ -38,24 +37,24 @@ public class TableauDAO {
     }
 
 
-    public List<Tableau> getAllTableauxNamelong6() {
+    public List<Tableau> getAllTableauxNamelong15() {
         String query = "select tab from Tableau as tab " +
-                "where LENGTH(tab.name) = 6";
+                "where LENGTH(tab.name) = 15";
         return EntityManagerHelper.getEntityManager().createQuery(query, Tableau.class).getResultList();
     }
 
-    public List<Tableau> getFirstTableau() {
+    public List<Tableau> getTableauASC() {
         String query = "select tab from Tableau as tab ORDER BY tab.name ASC";
         return EntityManagerHelper.getEntityManager().
                 createQuery(query, Tableau.class)
-                .setFirstResult(1).setMaxResults(1)
+                .setFirstResult(0).setMaxResults(10)
                 .getResultList();
     }
-    public List<Tableau> getLastTableau() {
+    public List<Tableau> getTableauDESC() {
         String query = "select tab from Tableau as tab ORDER BY tab.name DESC";
         return EntityManagerHelper.getEntityManager().
                 createQuery(query, Tableau.class)
-                .setFirstResult(1).setMaxResults(1)
+                .setFirstResult(0).setMaxResults(10)
                 .getResultList();
     }
 
@@ -64,10 +63,11 @@ public class TableauDAO {
         return EntityManagerHelper.getEntityManager().
                 createNativeQuery(query, Tableau.class).getResultList();
     }
-    public List<Tableau> getAllTableauxWithSectionsLoaded() {
-        String query = "SELECT tab from Tableau as tab "
-                + "where tab.name='tableau1' join fetch tab.section.name";
-        return EntityManagerHelper.getEntityManager().createQuery(query, Tableau.class).getResultList();
+
+    public List<Tableau> getAllSectionOFTableauParam(String name) {
+        String query = "select t from Tableau as t join t.sections as a where a.name=:name";
+        return EntityManagerHelper.getEntityManager().createQuery(query, Tableau.class)
+                .setParameter("name", name).getResultList();
     }
 
 

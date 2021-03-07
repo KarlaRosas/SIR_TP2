@@ -1,31 +1,29 @@
 package dao;
 
-import domain.Fiche;
 import domain.Tars;
 import jpa.EntityManagerHelper;
 import sun.security.krb5.internal.ccache.Tag;
-
 import javax.persistence.EntityTransaction;
 import java.util.List;
 
 public class TagsDAO {
 
-    public void saveTag(Tag tag) {
+    public void saveTag(Tars tag) {
         EntityTransaction ta = EntityManagerHelper.getEntityManager().getTransaction();
 
         ta.begin();
         EntityManagerHelper.getEntityManager().persist(tag);
         ta.commit();
     }
-    public List<Tag> getAllTagsDao() {
+    public List<Tars> getAllTagsDao() {
         String query = "select ta from Tars as ta";
-        return EntityManagerHelper.getEntityManager().createQuery(query, Tag.class).getResultList();
+        return EntityManagerHelper.getEntityManager().createQuery(query, Tars.class).getResultList();
     }
 
 
-    public List<Tag> getAllTagsImportantDao() {
+    public List<Tars> getAllTagsImportantDao() {
         String query = "select ta from Tars as ta where ta.name='Important'";
-        return EntityManagerHelper.getEntityManager().createQuery(query, Tag.class).getResultList();
+        return EntityManagerHelper.getEntityManager().createQuery(query, Tars.class).getResultList();
     }
 
     public List<Tag> getAllTagsPriorityDao() {

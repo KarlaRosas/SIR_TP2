@@ -1,10 +1,7 @@
 package dao;
 
-import domain.Fiche;
-import domain.Section;
 import domain.Utilisateur;
 import jpa.EntityManagerHelper;
-
 import javax.persistence.EntityTransaction;
 import java.util.List;
 

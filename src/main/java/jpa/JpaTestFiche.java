@@ -40,18 +40,43 @@ public class JpaTestFiche {
         tx.commit();
 
         test.listFiches();
-        //test.getFicheThibaultMich();
-        //test.listTableaux();
 
+        /**Tester Query Fiche**/
         /*FicheDAO dao = new FicheDAO();
         List<Fiche> fich = dao.getAllFichesParam("Important");
         for (Fiche f: fich) {
             System.err.println("Fiche:"+f.getId()+ " Name:  "+ f.getName());}*/
 
-        FicheDAO dao = new FicheDAO();
-        List<Fiche> fich = dao.get4FirstDESCfiches();
+        /*FicheDAO dao = new FicheDAO();
+        List<Fiche> fich = dao.getAllFichesSansUtilisateurDao();
         for (Fiche f: fich) {
-            System.err.println("Fiche:"+f.getId()+ " Name:  "+ f.getName());}
+            System.err.println("Fiche:"+f.getId()+ " Name:  "+ f.getName());}*/
+
+        /**Tester Query Section**/
+        /*
+        SectionDAO dao = new SectionDAO();
+        List<Section> sect = dao.getAllSectionParam("fiche1");
+        for (Section s: sect) {
+            System.err.println(s.getTableau().getName()+ "      Section Name:  "+ s.getName());}*/
+
+        /**Tester Query Tableau**/
+
+        /*TableauDAO dao = new TableauDAO();
+        List<Tableau> tableau = dao.getAllSectionOFTableauParam("En processus B");
+        for (Tableau t: tableau) {
+            System.err.println(t.getSections()+"Tableau Name:  "+ t.getName());}*/
+
+        /**Tester Query Utilisateur**/
+        /*UtilisateursDAO dao = new UtilisateursDAO();
+        List<Utilisateur> Utilisateur = dao.get2FirstDESCUtilisateurs();
+        for (Utilisateur u: Utilisateur) {
+            System.err.println("Utilisateur " + u.getName());}*/
+
+        /**Tester Query Tags**/
+        TagsDAO dao = new TagsDAO();
+        List<Tars> tags = dao.getAllTagsImportantDao();
+        for (Tars t: tags) {
+            System.err.println("Tags: " + t.getName()+" Name Fiche: "+t.getFiche().getName()+ " Dans la Section: "+t.getFiche().getSection().getName() +" Du "+t.getFiche().getSection().getTableau().getName() );}
 
 
 
@@ -75,10 +100,10 @@ public class JpaTestFiche {
             //List<Fiche> fiches = new ArrayList<Fiche>();
             Fiche fiche1 = new Fiche("fiche1",section1);
             Fiche fiche2 = new Fiche("fiche2",section2);
-            Fiche fiche3 = new Fiche("fiche1",section3);
-            Fiche fiche4 = new Fiche("fiche2",section4);
-            Fiche fiche5 = new Fiche("fiche1",section5);
-            Fiche fiche6 = new Fiche("fiche2",section6);
+            Fiche fiche3 = new Fiche("fiche3",section3);
+            Fiche fiche4 = new Fiche("fiche1",section4);
+            Fiche fiche5 = new Fiche("fiche2",section5);
+            Fiche fiche6 = new Fiche("fiche3",section6);
 
             Tars tag1 = new Tars("Priority",fiche2);
             Tars tag2 = new Tars("Important",fiche5);
