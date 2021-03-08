@@ -30,4 +30,5 @@ JRE >= 1.8
 * Karla ROSAS 
 * Rabeaa KESSAL
 * Léo VARIERAS
+* Olivier BARAIS
 
