@@ -24,6 +24,12 @@ JRE >= 1.8
 2. View the creation and population of the database
 3. In the JpaTest file, you will be able to configure the DAO file queries. 
    The results will be visible in the console. 
+ 
+ 
+**Merise**
+
+![MeriseSIR](https://user-images.githubusercontent.com/72248648/110381810-49e3a600-805a-11eb-813e-baacb6f3af13.png)
+
 
    
 **Authors**
