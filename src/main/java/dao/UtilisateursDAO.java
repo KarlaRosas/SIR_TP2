@@ -5,6 +5,9 @@ import jpa.EntityManagerHelper;
 import javax.persistence.EntityTransaction;
 import java.util.List;
 
+
+/**Query Utilisateur**/
+
 public class UtilisateursDAO {
 
     public void saveUtilisateur(Utilisateur utilisateur) {

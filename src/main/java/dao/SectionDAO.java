@@ -7,6 +7,7 @@ import jpa.EntityManagerHelper;
 import javax.persistence.EntityTransaction;
 import java.util.List;
 
+/**Query Section**/
 public class SectionDAO {
 
     public void saveSection(Section section) {

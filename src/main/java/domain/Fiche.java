@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.*;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,12 @@ public class Fiche {
     private Long id;
 
     private String name;
+    private String url;
+    private String lieu;
+    private String note;
+
+    private Integer tempsMinutes;
+
 
     private Section section;
 
@@ -24,9 +31,14 @@ public class Fiche {
     public Fiche() {
     }
 
-    public Fiche(String name, Section section) {
+    public Fiche(String name, Section section, String url, String lieu, String note, Integer tempsMinutes) {
         this.name = name;
         this.section = section;
+        this.lieu = lieu;
+        this.url = url;
+        this.note =note;
+        this.tempsMinutes =tempsMinutes;
+
     }
 
     public Fiche(String name) {
@@ -51,6 +63,31 @@ public class Fiche {
         this.name = name;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getLieu() {
+        return lieu;
+    }
+
+    public void setLieu(String lieu) {
+        this.lieu = lieu;
+    }
+
+
+
+    public Integer getTempsMinutes() {
+        return tempsMinutes;
+    }
+
+    public void setTempsMinutes(Integer tempsMinutes) {
+        this.tempsMinutes = tempsMinutes;
+    }
 
     @OneToMany(mappedBy = "fiche", cascade = CascadeType.PERSIST)
     public List<Tars> getTars() {

@@ -6,6 +6,8 @@ import sun.security.krb5.internal.ccache.Tag;
 import javax.persistence.EntityTransaction;
 import java.util.List;
 
+/**Query Tags**/
+
 public class TagsDAO {
 
     public void saveTag(Tars tag) {

@@ -7,6 +7,8 @@ import jpa.EntityManagerHelper;
 import javax.persistence.EntityTransaction;
 import java.util.List;
 
+
+/**Query Tableau**/
 public class TableauDAO {
 
     public void saveTableau(Tableau tableau) {

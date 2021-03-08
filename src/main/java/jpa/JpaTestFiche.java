@@ -98,12 +98,12 @@ public class JpaTestFiche {
             Section section5 = new Section("En processus F",tableau2);
             Section section6 = new Section("Taches finis  F ",tableau2 );
             //List<Fiche> fiches = new ArrayList<Fiche>();
-            Fiche fiche1 = new Fiche("fiche1",section1);
-            Fiche fiche2 = new Fiche("fiche2",section2);
-            Fiche fiche3 = new Fiche("fiche3",section3);
-            Fiche fiche4 = new Fiche("fiche1",section4);
-            Fiche fiche5 = new Fiche("fiche2",section5);
-            Fiche fiche6 = new Fiche("fiche3",section6);
+            Fiche fiche1 = new Fiche("fiche1",section1,"https://www.univ-rennes1.fr/", "Bordeaux", "Faire TP1",60);
+            Fiche fiche2 = new Fiche("fiche2",section2,"https://www.univ-rennes1.fr/", "Marseille", "Faire TP2",60);
+            Fiche fiche3 = new Fiche("fiche3",section3,"https://www.univ-rennes1.fr/", "Lille", "Faire TP3",60);
+            Fiche fiche4 = new Fiche("fiche1",section4,"https://www.univ-rennes1.fr/", "Strasbourg", "Faire TP4",60);
+            Fiche fiche5 = new Fiche("fiche2",section5,"https://www.univ-rennes1.fr/", "Paris", "Faire TP5",60);
+            Fiche fiche6 = new Fiche("fiche3",section6,"https://www.univ-rennes1.fr/", "Lyon", "Faire TP6",60);
 
             Tars tag1 = new Tars("Priority",fiche2);
             Tars tag2 = new Tars("Important",fiche5);

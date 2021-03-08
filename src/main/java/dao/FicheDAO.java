@@ -5,6 +5,9 @@ import jpa.EntityManagerHelper;
 import javax.persistence.EntityTransaction;
 import java.util.List;
 
+
+/**Query Fiche**/
+
 public class FicheDAO {
 
     public void saveFiche(Fiche fiche) {
