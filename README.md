@@ -18,7 +18,6 @@ JRE >= 1.8
     * Configurer path, username and password of the database
     * Verify that the 'create' parameter is enabled: property name="hibernate.hbm2ddl.auto" value="create"
     
-
 ##How it works
 
 1. Run the JpaTest file
